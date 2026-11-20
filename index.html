@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>amayadori-lab 作品集</title>
+    <meta name="description" content="思いついたら、その日に公開する。個人開発の作品をまとめたページです。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="amayadori-lab 作品集" />
+    <meta property="og:description" content="思いついたら、その日に公開する。個人開発の作品集。" />
+    <meta property="og:url" content="https://amayadori-lab.github.io/" />
+    <meta property="og:image" content="https://amayadori-lab.github.io/ogp.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://amayadori-lab.github.io/ogp.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f2f4f6;
+        --card: #ffffff;
+        --border: #d9dee3;
+        --ink: #16233a;
+        --ink-soft: #4a5a72;
+        --gold: #c9a227;
+        --gold-ink: #8a6d14;
+        --gold-soft: #f7efd2;
+        --btn-bg: #16233a;
+        --btn-ink: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #10151d;
+          --card: #1a212d;
+          --border: #2e3947;
+          --ink: #eef2f7;
+          --ink-soft: #a7b4c6;
+          --gold: #d9b64a;
+          --gold-ink: #e3c766;
+          --gold-soft: #2c2716;
+          --btn-bg: #c9a227;
+          --btn-ink: #16233a;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans JP", sans-serif;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 20px 16px 40px;
+      }
+
+      /* ---------- Header ---------- */
+      .site-header {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-top: 4px solid var(--gold);
+        border-radius: 10px;
+        padding: 28px 22px 24px;
+        margin-bottom: 28px;
+      }
+      .site-header h1 {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 900;
+        font-size: 30px;
+        line-height: 1.3;
+        margin: 0 0 8px;
+        letter-spacing: 0.01em;
+      }
+      .tagline {
+        margin: 0 0 18px;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--ink-soft);
+      }
+      .header-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
+      .count-pill {
+        display: inline-block;
+        padding: 3px 12px;
+        border: 1px solid var(--gold);
+        border-radius: 999px;
+        color: var(--gold-ink);
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .x-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 40px;
+        padding: 6px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .x-link:hover { border-color: var(--gold); }
+      .x-link svg { flex: none; }
+
+      /* ---------- Sections ---------- */
+      section { margin-bottom: 32px; }
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin: 0 2px 14px;
+      }
+      .section-num {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 900;
+        font-size: 15px;
+        color: var(--gold-ink);
+        border: 1px solid var(--gold);
+        border-radius: 6px;
+        padding: 1px 8px;
+        line-height: 1.5;
+      }
+      .section-head h2 {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        margin: 0;
+        line-height: 1.4;
+      }
+      .section-note {
+        margin: -6px 2px 14px;
+        color: var(--ink-soft);
+        font-size: 13px;
+      }
+
+      /* ---------- Cards ---------- */
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      @media (min-width: 720px) {
+        .grid { grid-template-columns: 1fr 1fr; }
+      }
+      .work-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .work-card.featured { border-color: var(--gold); }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .badge {
+        display: inline-block;
+        padding: 1px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.8;
+      }
+      .badge-day {
+        background: var(--gold);
+        color: #16233a;
+      }
+      .badge-date {
+        border: 1px solid var(--border);
+        color: var(--ink-soft);
+      }
+      .badge-cat {
+        background: var(--gold-soft);
+        color: var(--gold-ink);
+      }
+      .work-card h3 {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.45;
+        margin: 0;
+      }
+      .work-card p {
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 14px;
+        flex: 1;
+      }
+      .open-btn {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 40px;
+        margin-top: 6px;
+        padding: 7px 20px;
+        background: var(--btn-bg);
+        color: var(--btn-ink);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .open-btn:hover { opacity: 0.88; }
+
+      /* ---------- Footer ---------- */
+      footer {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px 22px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .footer-text {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+      }
+      .footer-text .dot { color: var(--gold); }
+      @media (max-width: 480px) {
+        .site-header { padding: 22px 16px 18px; }
+        .site-header h1 { font-size: 25px; }
+        footer { padding: 16px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <!-- ヘッダー（タイトル・タグラインはここに集約。シリーズ名の差し替えはこのブロック内だけで済む） -->
+      <header class="site-header">
+        <h1>amayadori-lab 作品集</h1>
+        <p class="tagline">思いついたら、その日に公開する。</p>
+        <div class="header-meta">
+          <span class="count-pill">作品 8点</span>
+          <a class="x-link" href="https://x.com/kei_thinklog" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            @kei_thinklog
+          </a>
+        </div>
+      </header>
+
+      <!-- セクション1：毎日シリーズ（新しい順。Day 2以降はこのリストの先頭に追加） -->
+      <section>
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <h2>毎日シリーズ</h2>
+        </div>
+        <p class="section-note">思いついたアイデアを、その日のうちに作って公開するシリーズ。</p>
+        <div class="grid">
+          <article class="work-card featured">
+            <div class="badges">
+              <span class="badge badge-day">Day 1</span>
+              <span class="badge badge-date">2026-11-19</span>
+            </div>
+            <h3>あなたの悪魔の実メーカー</h3>
+            <p>名前と4つの質問で、自分だけの悪魔の実が図鑑カードで出てくる。全30種＋モデル違い、二つ名と相性つき。</p>
+            <a class="open-btn" href="https://amayadori-lab.github.io/akuma-no-mi-maker/" target="_blank" rel="noopener">開く →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- セクション2：これまでの作品（メーカー系） -->
+      <section>
+        <div class="section-head">
+          <span class="section-num">02</span>
+          <h2>これまでの作品</h2>
+        </div>
+        <div class="grid">
+          <article class="work-card">
+            <div class="badges"><span class="badge badge-cat">メーカー系</span></div>
+            <h3>明日の朝刊メーカー</h3>
+            <p>昨日の出来事が明日の新聞一面になる。</p>
+            <a class="open-btn" href="https://muse.ai/s/ming-ri-nozhao-kan-meka-xhm6zxkxmfx0xcxgxr/WhzAofOQsEFHEW_Sa4V5c2rLEDfxFa60Rru7oh8qld0" target="_blank" rel="noopener">開く →</a>
+          </article>
+          <article class="work-card">
+            <div class="badges"><span class="badge badge-cat">メーカー系</span></div>
+            <h3>あなたのWikipediaメーカー</h3>
+            <p>自分が百科事典に立項されたら、という体裁の診断。</p>
+            <a class="open-btn" href="https://muse.ai/s/anatanowikipediameka-xnm6zxkxmbxvxrxx1/WqqjuxuqOrTCw-7APdkYTRB2zuxmyTtuPCI2JgB3wMU" target="_blank" rel="noopener">開く →</a>
+          </article>
+          <article class="work-card">
+            <div class="badges"><span class="badge badge-cat">メーカー系</span></div>
+            <h3>あなた商品ページメーカー</h3>
+            <p>自分が通販の商品ページになったら、という体裁の診断。</p>
+            <a class="open-btn" href="https://muse.ai/s/anatashang-pin-pezimeka-xem6zxkxmi1v3xm/N72aSd0v-e7_yTVUGqtg93NEqJFAXdDRlEySHkKffnQ" target="_blank" rel="noopener">開く →</a>
+          </article>
+          <article class="work-card">
+            <div class="badges"><span class="badge badge-cat">メーカー系</span></div>
+            <h3>あなたの取扱説明書メーカー</h3>
+            <p>自分の「取扱タイプ」を診断して取説風に出す。</p>
+            <a class="open-btn" href="https://muse.ai/s/anatanoqu-xi-shuo-ming-shu-meka-mxb6zxkxm7xe83xk/3ZRzAE1CbhIHFbif0ekp-ryJLqF7YtIy85en3Fe64Gk" target="_blank" rel="noopener">開く →</a>
+          </article>
+          <article class="work-card">
+            <div class="badges"><span class="badge badge-cat">メーカー系</span></div>
+            <h3>あなたの脳内メーカー</h3>
+            <p>今の頭の中の割合をグラフで出す。</p>
+            <a class="open-btn" href="https://muse.ai/s/anatanonoy-nei-meka-xtxe6zxlxcxgexbnj/2V0VkaYdrX6R1SkTAwZPt-Kd5oWdrzndh1LD_dn5EMs" target="_blank" rel="noopener">開く →</a>
+          </article>
+          <article class="work-card">
+            <div class="badges"><span class="badge badge-cat">メーカー系</span></div>
+            <h3>あなたの人生最終回メーカー</h3>
+            <p>自分の人生の最終回をアニメ最終回風に出す。</p>
+            <a class="open-btn" href="https://muse.ai/s/anatanoren-sheng-zui-zhong-hui-meka-x0xt6zxlxcxoxo59xr/mNFIAKpcH-HIZrPeWaC6gK1xYxR3TesHxAZwU6fmnCI" target="_blank" rel="noopener">開く →</a>
+          </article>
+          <article class="work-card">
+            <div class="badges"><span class="badge badge-cat">メーカー系</span></div>
+            <h3>戦闘力スカウター</h3>
+            <p>名前を入れるだけで戦闘力と世界ランキングを測定。</p>
+            <a class="open-btn" href="https://muse.ai/s/zhan-dou-li-sukauta-xpxe6zxlxcxixwrcxz/pCLN3Kg6nvNrCUNaYb8UqnflTZacDn36kbar9CF25pk" target="_blank" rel="noopener">開く →</a>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <span class="footer-text">毎日更新中<span class="dot">。</span></span>
+        <a class="x-link" href="https://x.com/kei_thinklog" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          @kei_thinklog
+        </a>
+      </footer>
+
+    </div>
+  </body>
+</html>
